@@ -53,8 +53,12 @@ const arr = {}
 arr["key1"] = "value1"
 arr["key2"] = "value2"
 arr["key3"] = "value3"
+arr["magic key"] = "treasure!"
 console.log(arr)
 console.log(arr["key1"])
+arr["key1"] = "value4"
+console.log(arr["key1"])
+console.log(arr["magic key"])
 console.log()
 
 
