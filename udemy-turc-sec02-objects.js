@@ -271,4 +271,33 @@ function sortPlay() {
     return -1*('' + a.title).localeCompare(b.title);
   })
   console.log(sortedTitlesDecending.map(b=>b.title))
-}sortPlay()
+}//sortPlay()
+
+
+
+function immutabilityPlay() {
+  //adding a book (and updating getbooks)
+  const newBook = { id: 6,
+                    title: "Finnegans Wake",
+                    author: "James Joyce"}
+  const bookCollection = [...getBooks(), newBook]
+  console.log(bookCollection)
+  getBooks = ()=> bookCollection
+
+  const newCollection = getBooks()
+  console.log(newCollection)
+
+  //delete a book from the updatedset
+  const reducedLibary = newCollection.filter( b=> b.title!=="A Game of Thrones")
+  console.log(reducedLibary)
+
+  //update a book in the book array: Add the publication date of Finnegans Wake
+  const updatedLibrary = newCollection.map( bk => {
+    if(bk.title === "Finnegans Wake"){
+      return {...bk, publicationDate: "1939-05-04"} //we are adding a new field
+    }
+    return bk
+  })
+  console.log(updatedLibrary.map(bk=>bk.publicationDate))
+  
+}immutabilityPlay()
